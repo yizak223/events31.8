@@ -35,4 +35,13 @@ function printUserNameInput() {
     divDate.innerHTML=myDate
 // }
     
-// if(myDate.getHours())
+if(myDate.getHours()<12){
+    document.body.style=`background: yellow;`
+    divDate.innerHTML+=`
+    <p>good day</p>`
+}
+else{
+    document.body.style=`background: blue;`
+    divDate.innerHTML+=`
+    <p>good night</p>`
+}
