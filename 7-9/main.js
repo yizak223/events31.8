@@ -14,23 +14,37 @@
 //     myDiv.style=`color:blue`
 // }
 //9    
-// function printNum() {
-//     pargMy.innerHTML+=`${arrayGuess}`
-// }
-// var arrayGuess=[]
+
+var arrayGuess = []
 // for (let i = 0; i < 5; i++) {
-//     arrayGuess[i]= prompt('num')
+//     arrayGuess[i]= +forTask9.value
 // }
 
-// var computerRandom=Math.floor(Math.random()*56)
-// for (let i = 0; i < 5; i++) {
-//     if(arrayGuess[i]==computerRandom){
-//         pargMy.innerHTML+=`goood!`
-//     }
-//     else{
-//         pargMy.innerHTML+=`bad!`
-//     }
-// }
+
+function enterNum() {
+    if (arrayGuess.length < 5) {
+        arrayGuess.push(forTask9.value)
+    }
+}
+function printNum() {
+    if (arrayGuess.length == 5) {
+        pargMy.innerHTML += `${arrayGuess}`
+    }
+    
+} 
+var computerRandom = Math.floor(Math.random() * 56)
+function showSuccess() {
+for (let i = 0; i < 5; i++) {
+    if (arrayGuess[i] == computerRandom) {
+        pargMy.innerHTML += `goood!`
+    }
+    else {
+        pargMy.innerHTML = `bad!`
+    }
+}
+}
+
+console.log(arrayGuess);
 //10
 // function printNum() {
 //     pargMy.innerHTML += `${arrayGuess}`
