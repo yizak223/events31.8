@@ -1,10 +1,11 @@
 var numUserArray=[]
-
+var c=1;
 function enterNum() {
     if(numUserArray.length<5 && userInput.value<56){
         numUserArray.push(userInput.value)
         myDiv.innerHTML+=`
-        <p>num:${userInput.value}</p>`
+        <p>num${c}:${userInput.value}</p>`
+        c++
     }
     else{
         alert('cant insert more then five or number bigger then 56 or smaller then 0')
