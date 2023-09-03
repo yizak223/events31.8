@@ -48,7 +48,7 @@ function printAllNames() {
     for (let i = 0; i < namesCollectionInput.length; i++) {
         nameArray.push(namesCollectionInput[i].value)
         myUl.innerHTML += `
-        <li class='namesList'>first name:${namesCollectionInput[i].value} lastname: ${lastname.value}</li>`
+        <li class='namesList'>${namesCollectionInput[i].value}  ${lastname.value}</li>`
     }
     console.log(nameArray);
     var namesCollectionList = myUl.getElementsByTagName('li')
