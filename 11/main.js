@@ -1,25 +1,25 @@
-
-
-
-
-
 // function printToLogNamE() {
 //     console.log(forName.value);
 // }
 function refreshPage() {
     location.reload()
 }
-
 function printToLogAge() {
-    var yearToday = new Date().getFullYear()
+    var yearToday = new Date()
     console.log(yearToday);
     var dateInput = forAge.value
     console.log(dateInput);
     var makeItDate = new Date(dateInput);
-    var year = makeItDate.getFullYear();
+    var year = makeItDate;
     console.log(year);
-    console.log(yearToday - year);
-    if (yearToday - year >= 18) {
+    console.log(yearToday.getFullYear() - year.getFullYear());
+    var userAge=yearToday.getFullYear() - year.getFullYear();
+    if(yearToday.getMonth()<makeItDate.getMonth()||
+    yearToday.getMonth()===makeItDate.getMonth()&&yearToday.getDate() < makeItDate.getDate())
+    {
+        userAge--;
+    }
+    if (userAge >= 18) {
         myDiv.innerHTML = `
         <h1  onmouseover="changeToGreen()" >wellcome</h1>
         <input  onchange="printLog() " class="firstname" type="text" placeholder="enter first name"><br>
@@ -41,13 +41,16 @@ function printToLogAge() {
 function changeToGreen() {
     myDiv.style = `color:green`
 }
+var nameArray = []
 function printAllNames() {
     var namesCollectionInput = myDiv.getElementsByClassName('firstname')
     var lastNameLowerCase = lastname.value.toLowerCase()
     for (let i = 0; i < namesCollectionInput.length; i++) {
+        nameArray.push(namesCollectionInput[i].value)
         myUl.innerHTML += `
         <li class='namesList'>first name:${namesCollectionInput[i].value} lastname: ${lastname.value}</li>`
     }
+    console.log(nameArray);
     var namesCollectionList = myUl.getElementsByTagName('li')
     console.log(namesCollectionList);
     for (let j = 0; j < namesCollectionInput.length; j++) {
@@ -56,10 +59,43 @@ function printAllNames() {
             namesCollectionList[j].style = `color:pink;`
         }
     }
-    console.log(namesCollectionList);
+    myUl.innerHTML += `
+    <button onclick='makeItOrder()'>show names according to the order of their length</button>
+    `
+    myDivForInput.innerHTML += `
+    <button onmouseover="userOverButton()" onclick="openInput()">open input</button>`
+}
+console.log(nameArray);
+function openInput() {
+    myDivForInput.innerHTML += `
+    <input id='searchInput' oninput="showResult()" type="text" placeholder='search name'>`
+}
+function showResult() {
+    for (let k = 0; k < nameArray.length; k++) {
+        {
+            if (0 <= nameArray[k].indexOf(searchInput.value) && nameArray[k].indexOf(searchInput.value) < nameArray[k].length) {
+                console.log(nameArray[k].indexOf(searchInput.value));
+                console.log(nameArray[k].length);
+                resultOfInput.innerHTML= searchInput.value
+            }
+            else{
+                resultOfInput.innerHTML=`this name isn't exsist`
+            }
+        }
+
+    }
+}
+function userOverButton() {
+    console.log('the user want to serch');
 }
 
-
+// function makeItOrder() {
+//     namesCollectionInput.sort(function(a,b){
+//         myUl.innerHTML += `
+//         <li class='namesList'>first name:${namesCollectionInput[i].value} lastname: ${lastname.value}</li>`
+//     })
+//     console.log(namesCollectionInput);
+// }
 
 
 
